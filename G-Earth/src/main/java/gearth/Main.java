@@ -37,14 +37,13 @@ public class Main extends Application {
 
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/gearth/G-EarthLogoSmaller.png")));
 
-        // TODO fix
-        primaryStage.setResizable(false);
-//        primaryStage.setResizable(true);
-//        primaryStage.onShownProperty().addListener(e -> {
-//            Platform.runLater(() -> primaryStage.setResizable(false));
-//        });
+        primaryStage.setResizable(true);
+        primaryStage.onShownProperty().addListener(
+                e -> {
+                    Platform.runLater(() -> primaryStage.setResizable(false));
+                }
+                );
 
-        //primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setTitle("G-Earth " + version);
         primaryStage.setScene(new Scene(root, 650, 295));
         primaryStage.show();
@@ -63,11 +62,10 @@ public class Main extends Application {
                 Platform.runLater(() -> {
                     Alert alert = new Alert(Alert.AlertType.ERROR, "G-Earth needs admin privileges in order to work properly, please restart G-Earth with admin permissions unless you know what you're doing", ButtonType.OK);
                     alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
-                    alert.setResizable(false);
-//                    alert.setResizable(true);
-//                    alert.onShownProperty().addListener(e -> {
-//                        Platform.runLater(() -> alert.setResizable(false));
-//                    });
+                    alert.setResizable(true);
+                    alert.onShownProperty().addListener(e -> {
+                        Platform.runLater(() -> alert.setResizable(false));
+                    });
                     alert.show();
                 });
 
